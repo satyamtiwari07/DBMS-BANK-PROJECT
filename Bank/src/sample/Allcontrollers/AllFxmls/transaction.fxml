@@ -6,21 +6,15 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="1025.0" style="-fx-background-color: #89ABE3FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Allcontrollers.Transaction">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="1017.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Allcontrollers.Transaction">
    <children>
-      <AnchorPane layoutY="78.0" prefHeight="440.0" prefWidth="870.0" style="-fx-background-color: white;">
+      <AnchorPane layoutY="78.0" prefHeight="404.0" prefWidth="822.0" style="-fx-background-color: orange;">
          <children>
-            <VBox layoutY="46.0" prefHeight="193.0" prefWidth="119.0">
+            <VBox prefHeight="200.0" prefWidth="119.0">
                <children>
                   <Label alignment="CENTER" prefHeight="22.0" prefWidth="119.0" text="Transaction Number : ">
                      <VBox.margin>
@@ -54,44 +48,44 @@
                   </Label>
                </children>
             </VBox>
-            <VBox layoutX="119.0" layoutY="42.0" prefHeight="214.0" prefWidth="156.0">
+            <VBox layoutX="119.0" prefHeight="200.0" prefWidth="156.0">
                <children>
-                  <TextField fx:id="tranoentry" promptText="Enter Transaction Number">
+                  <TextField fx:id="tranoentry">
                      <VBox.margin>
                         <Insets top="7.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="accentry" promptText="Enter Account Number">
+                  <TextField fx:id="accentry">
                      <VBox.margin>
                         <Insets top="7.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="datentey" promptText="Enter Transaction Date">
+                  <TextField fx:id="datentey">
                      <VBox.margin>
                         <Insets top="9.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="modentry" promptText="Enter Mode">
+                  <TextField fx:id="modentry">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="typeentry" promptText="Enter Type">
+                  <TextField fx:id="typeentry">
                      <VBox.margin>
                         <Insets top="7.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="amountentry" promptText="Enter Amount">
+                  <TextField fx:id="amountentry">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
                   </TextField>
                </children>
             </VBox>
-            <Button fx:id="updatebutton" layoutX="213.0" layoutY="262.0" mnemonicParsing="false" onAction="#updatebtn" text="Update" />
-            <Button fx:id="deletebutton" layoutX="119.0" layoutY="262.0" mnemonicParsing="false" onAction="#deletebtn" text="Delete" />
-            <Button fx:id="insertbutton" layoutX="26.0" layoutY="262.0" mnemonicParsing="false" onAction="#insertbtn" text="Insert" />
-            <TableView fx:id="transactiontable" layoutX="279.0" layoutY="36.0" onMouseClicked="#selectentry" prefHeight="371.0" prefWidth="584.0">
+            <Button fx:id="updatebutton" layoutX="213.0" layoutY="237.0" mnemonicParsing="false" onAction="#updatebtn" text="Update" />
+            <Button fx:id="deletebutton" layoutX="119.0" layoutY="237.0" mnemonicParsing="false" onAction="#deletebtn" text="Delete" />
+            <Button fx:id="insertbutton" layoutX="26.0" layoutY="237.0" mnemonicParsing="false" onAction="#insertbtn" text="Insert" />
+            <TableView fx:id="transactiontable" layoutX="279.0" layoutY="14.0" onMouseClicked="#selectentry" prefHeight="349.0" prefWidth="584.0">
               <columns>
                 <TableColumn fx:id="tnotable" prefWidth="128.0" text="tranaction Number" />
                 <TableColumn fx:id="accnotable" prefWidth="120.0" text="Account Number" />
@@ -101,38 +95,38 @@
                   <TableColumn fx:id="amounttable" prefWidth="79.0" text="Amount" />
               </columns>
             </TableView>
-            <Text layoutX="15.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER YOUR TRANSACTION DETAILS" textAlignment="CENTER" wrappingWidth="258.33677673339844">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
          </children>
       </AnchorPane>
-      <VBox layoutX="873.0" layoutY="78.0" prefHeight="440.0" prefWidth="156.0" style="-fx-background-color: #89ABE3FFan;">
+      <Label layoutX="234.0" layoutY="26.0" prefHeight="35.0" prefWidth="310.0" text="TRANSACTION DATABASE" textFill="WHITE" underline="true">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Label>
+      <VBox layoutX="865.0" layoutY="1.0" prefHeight="481.0" prefWidth="147.0" style="-fx-background-color: cyan;">
          <children>
             <Button fx:id="customer_btn" mnemonicParsing="false" onAction="#customer_button" prefHeight="25.0" prefWidth="103.0" text="customer" underline="true">
                <VBox.margin>
-                  <Insets left="24.0" top="54.0" />
+                  <Insets left="24.0" top="64.0" />
                </VBox.margin>
             </Button>
             <Button fx:id="branch_btn" mnemonicParsing="false" onAction="#branch_button" prefHeight="25.0" prefWidth="106.0" text="Branch" underline="true">
                <VBox.margin>
-                  <Insets left="24.0" top="54.0" />
+                  <Insets left="24.0" top="64.0" />
                </VBox.margin>
             </Button>
             <Button fx:id="account_btn" mnemonicParsing="false" onAction="#account_button" prefHeight="25.0" prefWidth="108.0" text="account" underline="true">
                <VBox.margin>
-                  <Insets left="24.0" top="54.0" />
+                  <Insets left="24.0" top="64.0" />
                </VBox.margin>
             </Button>
             <Button fx:id="loan_btn" mnemonicParsing="false" onAction="#loan_button" prefHeight="25.0" prefWidth="109.0" text="loan" underline="true">
                <VBox.margin>
-                  <Insets left="24.0" top="54.0" />
+                  <Insets left="24.0" top="64.0" />
                </VBox.margin>
             </Button>
             <Button fx:id="exit" mnemonicParsing="false" onAction="#exit_btn" prefHeight="25.0" prefWidth="109.0" text="exit" underline="true">
                <VBox.margin>
-                  <Insets left="24.0" top="54.0" />
+                  <Insets left="24.0" top="64.0" />
                </VBox.margin>
                <padding>
                   <Insets left="3.0" />
@@ -140,31 +134,5 @@
             </Button>
          </children>
       </VBox>
-      <ImageView fitHeight="49.0" fitWidth="94.0" layoutX="901.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="206.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BANK PORTAL" textAlignment="CENTER" underline="true" wrappingWidth="374.9666442871094">
-         <font>
-            <Font size="37.0" />
-         </font>
-         <fill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.7789473533630371" green="0.7789473533630371" blue="0.7789473533630371" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Text>
    </children>
 </AnchorPane>
