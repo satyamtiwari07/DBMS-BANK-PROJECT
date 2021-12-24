@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="506.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Allcontrollers.Customer">
+   <children>
+      <AnchorPane prefHeight="506.0" prefWidth="707.0">
+         <children>
+            <Text layoutX="61.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LAST-NAME" wrappingWidth="94.13673400878906" />
+            <Text layoutX="61.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CUSTOMER ID" wrappingWidth="94.13673400878906" />
+            <Text layoutX="61.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FIRST-NAME" wrappingWidth="94.13673400878906" />
+            <TextField fx:id="cidentry" layoutX="163.0" layoutY="134.0" />
+            <TextField fx:id="firstentry" layoutX="163.0" layoutY="172.0" />
+            <TextField fx:id="lastentry" layoutX="163.0" layoutY="210.0" />
+            <Text layoutX="61.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CITY" wrappingWidth="94.13673400878906" />
+            <TextField fx:id="cityentry" layoutX="163.0" layoutY="246.0" />
+            <Text layoutX="61.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOBILE NO" wrappingWidth="94.13673400878906" />
+            <TextField fx:id="mobilentery" layoutX="163.0" layoutY="283.0" />
+            <Text layoutX="61.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OCCUPATION" wrappingWidth="94.13673400878906" />
+            <TextField fx:id="occupationentry" layoutX="163.0" layoutY="322.0" />
+            <Text layoutX="61.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOB" wrappingWidth="94.13673400878906" />
+            <DatePicker fx:id="dob" layoutX="164.0" layoutY="367.0" />
+            <Button fx:id="insertbtn" layoutX="70.0" layoutY="435.0" mnemonicParsing="false" onAction="#insertbutton" text="INSERT" />
+            <Button fx:id="deletedtn" layoutX="171.0" layoutY="435.0" mnemonicParsing="false" onAction="#deletebutton" text="DELETE" />
+            <Button fx:id="updatebtn" layoutX="277.0" layoutY="435.0" mnemonicParsing="false" onAction="#updatebutton" text="UPDATE" />
+            <Pane prefHeight="99.0" prefWidth="1169.0" style="-fx-background-color: #89ABE3FF;">
+               <children>
+                  <Text layoutX="320.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BANK PORTAL" textAlignment="CENTER" underline="true" wrappingWidth="374.9666442871094">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                     <fill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.7789473533630371" green="0.7789473533630371" blue="0.7789473533630371" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Text>
+                  <ImageView fitHeight="49.0" fitWidth="94.0" layoutX="1063.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Text layoutX="70.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER YOUR BANK CREDENTIALS" textAlignment="CENTER" wrappingWidth="229.33677673339844">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TableView fx:id="banktable" layoutX="370.0" layoutY="106.0" prefHeight="393.0" prefWidth="646.0">
+              <columns>
+                <TableColumn fx:id="cidcolumn" prefWidth="100.0" text="Customer id" />
+                  <TableColumn fx:id="firstcolumn" minWidth="0.0" prefWidth="87.0" text="First name" />
+                  <TableColumn fx:id="lastcolumn" minWidth="0.0" prefWidth="88.0" text="Last Name" />
+                  <TableColumn fx:id="citycolumn" minWidth="0.0" prefWidth="78.0" text="City" />
+                  <TableColumn fx:id="mobilecolumn" minWidth="0.0" prefWidth="104.0" text="Mobile no" />
+                  <TableColumn fx:id="occupationcolumn" minWidth="0.0" prefWidth="95.0" text="Occupation" />
+                  <TableColumn fx:id="dobcolumn" prefWidth="93.0" text="DOB" />
+              </columns>
+            </TableView>
+            <VBox layoutX="1024.0" layoutY="98.0" prefHeight="409.0" prefWidth="145.0" style="-fx-background-color: #89ABE3FF;" />
+            <Button fx:id="transactionbtn" layoutX="1055.0" layoutY="154.0" mnemonicParsing="false" onAction="#transactionbutton" prefHeight="30.0" prefWidth="102.0" text="TRANSACTION" />
+            <Button fx:id="accountbtn" layoutX="1055.0" layoutY="261.0" mnemonicParsing="false" onAction="#accountbtn" prefHeight="30.0" prefWidth="94.0" text="ACCOUNT" />
+            <Button fx:id="branchbtn" layoutX="1055.0" layoutY="205.0" mnemonicParsing="false" onAction="#branchbutton" prefHeight="30.0" prefWidth="94.0" text="BRANCH" />
+            <Button fx:id="loanbtn" layoutX="1055.0" layoutY="317.0" mnemonicParsing="false" onAction="#loanbutton" prefHeight="30.0" prefWidth="94.0" text="LOAN" />
+            <Button fx:id="exitbtn" layoutX="1055.0" layoutY="374.0" mnemonicParsing="false" onAction="#exitbutton" prefHeight="30.0" prefWidth="94.0" text="EXIT" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
