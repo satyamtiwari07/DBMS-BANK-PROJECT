@@ -18,10 +18,7 @@ import sample.AllClasses.loanclass;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class Loan implements Initializable {
@@ -128,7 +125,7 @@ public class Loan implements Initializable {
     }
 
     @FXML
-    void deleterecord(ActionEvent event) {
+    void deleterecord(ActionEvent event) throws SQLException {
         if(event.getSource()==loandelete){
             deletingrecord();
         }
@@ -136,7 +133,6 @@ public class Loan implements Initializable {
     @FXML
     void handlemouseclick(MouseEvent event) {
         loanclass items =loantable.getSelectionModel().getSelectedItem();
-//        System.out.println(items.getAmount());
         loanentryamount.setText(String.valueOf(items.getAmount()));
         loanentrybranchid.setText(String.valueOf(items.getBranch_id()));
         loanentrycustomerid.setText(String.valueOf(items.getCustomer_id()));
@@ -150,7 +146,7 @@ public class Loan implements Initializable {
     }
 
     @FXML
-    void updaterecord(ActionEvent event) {
+    void updaterecord(ActionEvent event) throws SQLException {
         if(event.getSource()==loanupdate){
             updatingrecord();
         }
@@ -165,7 +161,7 @@ public class Loan implements Initializable {
         Connection c;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            c= DriverManager.getConnection("jdbc:mysql://117.236.190.213/bank_144","bank_144","bank_144");
+            c= DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_144","root","Satyam@07");
             System.out.println("Connected to the database successfully " + c.getCatalog());
             return c;
         }
@@ -207,46 +203,49 @@ public class Loan implements Initializable {
     }
 
     private void insertingrecord(){
-        String sql = "insert into loan values ("+loanentrycustomerid.getText() + "," + loanentrybranchid.getText()+ "," + loanentryamount.getText() + ")";
-        executeQuery(sql);
-        showloanrecord();
-    }
-
-    private void executeQuery(String sql) {
         Connection c=getConnection();
-        Statement st ;
+        String sql= "insert into loan values  (?, ?, ?)";
+        PreparedStatement pstmt ;
+        try {
+            pstmt = c.prepareStatement(sql);
+            pstmt.setInt(1, Integer.parseInt(loanentrycustomerid.getText()));
+            pstmt.setInt(2, Integer.parseInt(loanentrybranchid.getText()));
+            pstmt.setInt(3, Integer.parseInt(loanentryamount.getText()));
+            pstmt.execute();
+           showloanrecord();
+        } catch (SQLException throwables) {
+            printing(throwables.getMessage(),"Error in insert","Error");
+        }
+    }
 
-        try{
-            st=c.createStatement();
-            st.executeUpdate(sql);
-//            if(check==0) {
-//              //if(str=="update")  printing("Value Not Found","Can't Update",str); //because of foreign key not work
-////              else
-//              if(str=="delete") printing("Value Not Found","Can't Delete",str) ;
-//            }
-        }
-        catch(Exception e){
-            printing(e.getMessage(),"Cant't Insert ","Insert");
-            System.out.println("Error occur in insert statement in loan");
-        }
+    private void updatingrecord() throws SQLException {
+
+        Connection c= getConnection();
+        String sql="Update loan set amount=? where customer_id=? and branch_id=?";
+        PreparedStatement stmt=c.prepareStatement(sql);
+        stmt.setInt(1, Integer.parseInt(loanentryamount.getText()));
+        stmt.setInt(2, Integer.parseInt(loanentrycustomerid.getText()));
+        stmt.setInt(3, Integer.parseInt(loanentrybranchid.getText()));
+        int check =stmt.executeUpdate();
+//        System.out.println(check);
+        if(check>0) showloanrecord();
+        else printing("Not Updated ","update","Error");
 
     }
 
-    //foreign key not connected it will not work
-    private void updatingrecord(){
-        String sql="update loan set branch_id="+ loanentrybranchid.getText() +",amount="+loanentryamount.getText()+
-                   " where customer_id="+ loanentrycustomerid.getText();
-        executeQuery(sql);
-        showloanrecord();
-    }
+    private void deletingrecord() throws SQLException {
 
-//    delete from loan where amount=143;
-    private void deletingrecord(){
-        String sql="delete from loan where customer_id="+loanentrycustomerid.getText()+" and branch_id="+
-                   loanentrybranchid.getText()+" and amount="+loanentryamount.getText();
-        executeQuery(sql);
+        Connection c= getConnection();
+        //"delete from table name where name=__";
+        String sql="delete from loan where  customer_id=? and branch_id =? and amount =? ";
+        PreparedStatement stmt = c.prepareStatement(sql);
+        stmt.setInt(1, Integer.parseInt(loanentrycustomerid.getText()));
+        stmt.setInt(2, Integer.parseInt(loanentrybranchid.getText()));
+        stmt.setInt(3, Integer.parseInt(loanentryamount.getText()));
+        int i=stmt.executeUpdate();
+        if(i>0) showloanrecord();
+        else printing("Record not Found","Not Delete","Delete");
 
-        showloanrecord();
     }
 
     public static void printing(String infoMessage, String headerText, String title){

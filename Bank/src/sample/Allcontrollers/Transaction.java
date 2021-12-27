@@ -25,6 +25,9 @@ public class Transaction implements Initializable {
     Stage dialogStage = new Stage();
     Scene scene;
 
+    @FXML
+    private Button querybutton;
+
     @FXML // fx:id="accentry"
     private TextField accentry; // Value injected by FXMLLoader
 
@@ -121,6 +124,16 @@ public class Transaction implements Initializable {
         }
 
     }
+    @FXML
+    void query_btn(ActionEvent event) throws IOException {
+        if(event.getSource()==querybutton){
+            Node node = (Node) event.getSource();
+            dialogStage = (Stage) node.getScene().getWindow();
+            scene = new Scene(FXMLLoader.load(getClass().getResource("/sample/Allcontrollers/AllFxmls/query.fxml")));
+            dialogStage.setScene(scene);
+            dialogStage.show();
+        }
+    }
 
     @FXML
     void customer_button(ActionEvent event) throws IOException {
@@ -173,7 +186,7 @@ public class Transaction implements Initializable {
             }
     }
 
-    // best way is use prepared statement faster in execution insert record in database
+    //best way is use prepared statement
     private void insertrecord()  {
         Connection c=getConnection();
         String sql= "insert into transaction_detail values  (?, ?, ?, ?, ?, ?)";
@@ -248,7 +261,7 @@ public class Transaction implements Initializable {
         Connection c;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            c= DriverManager.getConnection("jdbc:mysql://117.236.190.213/bank_144","bank_144","bank_144");
+            c= DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_144","root","Satyam@07");
             System.out.println("Connected to the database successfully " + c.getCatalog());
             return c;
         }

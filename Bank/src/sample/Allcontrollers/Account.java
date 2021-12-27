@@ -134,20 +134,26 @@ public class Account implements Initializable {
     }
 
     @FXML
-    void insetbtn(ActionEvent event) throws SQLException {
+    private void insetbtn(ActionEvent event)  {
         if (event.getSource() == insertbutton) {
             Connection c = getConnection();
             String sql = "insert into account values(?,?,?,?,?,?,?)";
-            PreparedStatement stmt = c.prepareStatement(sql);
-            stmt.setInt(1, Integer.parseInt(entryaccno.getText()));
-            stmt.setInt(2, Integer.parseInt(entrycusno.getText()));
-            stmt.setInt(3, Integer.parseInt(entrybranchno.getText()));
-            stmt.setInt(4, Integer.parseInt(enteramount.getText()));
-            stmt.setDate(5, Date.valueOf(enterdate.getText()));
-            stmt.setString(6, entertype.getText());
-            stmt.setString(7, enterstatus.getText());
-            stmt.execute();
-            showaccountrecord();
+            PreparedStatement stmt;
+            try {
+                stmt = c.prepareStatement(sql);
+                stmt.setInt(1, Integer.parseInt(entryaccno.getText()));
+                stmt.setInt(2, Integer.parseInt(entrycusno.getText()));
+                stmt.setInt(3, Integer.parseInt(entrybranchno.getText()));
+                stmt.setInt(4, Integer.parseInt(enteramount.getText()));
+                stmt.setDate(5, Date.valueOf(enterdate.getText()));
+                stmt.setString(6, entertype.getText());
+                stmt.setString(7, enterstatus.getText());
+                stmt.execute();
+                showaccountrecord();
+            } catch (SQLException throwables) {
+                printing(throwables.getMessage(),"Error in insert","Error");
+            }
+
         }
     }
 
@@ -176,14 +182,51 @@ public class Account implements Initializable {
     }
 
     @FXML
-    void deletebtn(ActionEvent event) {
-
+    private void deletebtn(ActionEvent event) throws SQLException {
+        if(event.getSource()==deletebutton){
+            Connection c= getConnection();
+            //"delete from table name where name=__";
+            String sql="delete from account where account_number=? and customer_id=? " +
+                    "and  branch_id=? and opening_amount=? and opening_date=? and account_type=? and account_status=?";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setInt(1, Integer.parseInt(entryaccno.getText()));
+            stmt.setInt(2, Integer.parseInt(entrycusno.getText()));
+            stmt.setInt(3, Integer.parseInt(entrybranchno.getText()));
+            stmt.setInt(4, Integer.parseInt(enteramount.getText()));
+            stmt.setDate(5, Date.valueOf(enterdate.getText()));
+            stmt.setString(6,entertype.getText());
+            stmt.setString(7,enterstatus.getText());
+            int i=stmt.executeUpdate();
+            if(i>0) showaccountrecord();
+            else printing("Record not Found","Not Delete","Delete");
+        }
 
     }
 
     @FXML
-    void updatebtn(ActionEvent event) {
+    private void updatebtn(ActionEvent event) throws SQLException {
+        if(event.getSource()==updatebutton){
 
+            Connection c= getConnection();
+            String sql="Update account set customer_id=? , " +
+                    "branch_id=?,opening_amount=?" +
+                    ",opening_date=?,account_type=? ,account_status=?" +
+                    "where  account_number=?";
+
+            PreparedStatement stmt=c.prepareStatement(sql);
+            stmt.setInt(1, Integer.parseInt(entrycusno.getText()));
+            stmt.setInt(2, Integer.parseInt(entrybranchno.getText()));
+            stmt.setInt(3, Integer.parseInt(enteramount.getText()));
+            stmt.setDate(4, Date.valueOf(enterdate.getText()));
+            stmt.setString(5,entertype.getText());
+            stmt.setString(6,enterstatus.getText());
+            stmt.setInt(7, Integer.parseInt(entryaccno.getText()));
+            int check =stmt.executeUpdate();
+//            System.out.println(check);
+            if(check>0) showaccountrecord();
+            else printing("Not Updated ","update","Error");
+
+        }
     }
 
     @Override
@@ -195,7 +238,7 @@ public class Account implements Initializable {
         Connection c;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            c= DriverManager.getConnection("jdbc:mysql://117.236.190.213/bank_144","bank_144","bank_144");
+            c= DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_144","root","Satyam@07");
             System.out.println("Connected to the database successfully " + c.getCatalog());
             return c;
         }
@@ -204,7 +247,6 @@ public class Account implements Initializable {
             return null;
         }
     }
-
 
     private ObservableList<accountclass> getaccountrecord() {
         ObservableList<accountclass> recordlist= FXCollections.observableArrayList();

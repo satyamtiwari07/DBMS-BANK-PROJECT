@@ -110,33 +110,41 @@
       </AnchorPane>
       <VBox layoutX="873.0" layoutY="78.0" prefHeight="440.0" prefWidth="156.0" style="-fx-background-color: #89ABE3FFan;">
          <children>
-            <Button fx:id="customer_btn" mnemonicParsing="false" onAction="#customer_button" prefHeight="25.0" prefWidth="103.0" text="customer" underline="true">
+            <Button fx:id="customer_btn" mnemonicParsing="false" onAction="#customer_button" prefHeight="25.0" prefWidth="103.0" text="Customer" underline="true">
                <VBox.margin>
-                  <Insets left="24.0" top="54.0" />
+                  <Insets left="25.0" top="40.0" />
                </VBox.margin>
             </Button>
             <Button fx:id="branch_btn" mnemonicParsing="false" onAction="#branch_button" prefHeight="25.0" prefWidth="106.0" text="Branch" underline="true">
                <VBox.margin>
-                  <Insets left="24.0" top="54.0" />
+                  <Insets left="25.0" top="40.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="account_btn" mnemonicParsing="false" onAction="#account_button" prefHeight="25.0" prefWidth="108.0" text="account" underline="true">
+            <Button fx:id="account_btn" mnemonicParsing="false" onAction="#account_button" prefHeight="25.0" prefWidth="108.0" text="Account" underline="true">
                <VBox.margin>
-                  <Insets left="24.0" top="54.0" />
+                  <Insets left="25.0" top="40.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="loan_btn" mnemonicParsing="false" onAction="#loan_button" prefHeight="25.0" prefWidth="109.0" text="loan" underline="true">
+            <Button fx:id="loan_btn" mnemonicParsing="false" onAction="#loan_button" prefHeight="25.0" prefWidth="109.0" text="Loan" underline="true">
                <VBox.margin>
-                  <Insets left="24.0" top="54.0" />
+                  <Insets left="25.0" top="40.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="exit" mnemonicParsing="false" onAction="#exit_btn" prefHeight="25.0" prefWidth="109.0" text="exit" underline="true">
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#exit_btn" prefHeight="25.0" prefWidth="109.0" text="Exit" underline="true">
                <VBox.margin>
-                  <Insets left="24.0" top="54.0" />
+                  <Insets left="25.0" top="40.0" />
                </VBox.margin>
                <padding>
                   <Insets left="3.0" />
                </padding>
+            </Button>
+            <Button fx:id="querybutton" mnemonicParsing="false" onAction="#query_btn" prefHeight="25.0" prefWidth="109.0" text="Query" underline="true">
+               <padding>
+                  <Insets left="3.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="25.0" top="40.0" />
+               </VBox.margin>
             </Button>
          </children>
       </VBox>

@@ -20,6 +20,7 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+
 public class Customer implements Initializable {
 
     Stage dialogStage = new Stage();
@@ -130,8 +131,28 @@ public class Customer implements Initializable {
     }
 
     @FXML
-    void deletebutton(ActionEvent event) {
-
+    void deletebutton(ActionEvent event)  {
+        if(event.getSource()==deletedtn){
+            Connection c=getConnection();
+            String sql="Delete from customer where customer_id=? and fname=? and  lname=? and city=? and occupation=? and dob=? and mobileno=?";
+            PreparedStatement smt;
+            try {
+                smt = c.prepareStatement(sql);
+                smt.setInt(1,Integer.parseInt(cidentry.getText()));
+                smt.setString(2,firstentry.getText());
+                smt.setString(3,lastentry.getText());
+                smt.setString(4,cityentry.getText());
+                smt.setString(5,occupationentry.getText());
+                smt.setDate(6,Date.valueOf(dob.getText()));
+                smt.setLong(7,Long.parseLong(mobilentery.getText()));
+                int check =smt.executeUpdate();
+//            System.out.println(check);
+                if(check>0) showcustomerrecord();
+                else printing("Record not Found","Not Delete","Delete");
+            } catch (SQLException throwables) {
+                printing(throwables.getMessage(),"Not Delete","Delete");
+            }
+        }
     }
 
     @FXML
@@ -153,7 +174,7 @@ public class Customer implements Initializable {
                 pstmt.setString(4, cityentry.getText());
                 pstmt.setString(5, occupationentry.getText());
                 pstmt.setDate(6, Date.valueOf(dob.getText()));
-                pstmt.setLong(7, Integer.parseInt(mobilentery.getText()));
+                pstmt.setLong(7, Long.parseLong(mobilentery.getText()));
                 pstmt.execute();
                 showcustomerrecord();
 
@@ -187,7 +208,24 @@ public class Customer implements Initializable {
     }
 
     @FXML
-    void updatebutton(ActionEvent event) {
+    void updatebutton(ActionEvent event) throws SQLException {
+        if(event.getSource()==updatebtn){
+            Connection c= getConnection();
+            String sql="Update customer set fname=? ,lname=? ,city=? ,occupation=? ,dob=? ,mobileno=? where customer_id=?";
+            PreparedStatement stmt=c.prepareStatement(sql);
+            stmt.setString(1,firstentry.getText());
+            stmt.setString(2,lastentry.getText());
+            stmt.setString(3,cityentry.getText());
+            stmt.setString(4,occupationentry.getText());
+            stmt.setDate(5, Date.valueOf(dob.getText()));
+            stmt.setLong(6, Long.parseLong(mobilentery.getText()));
+            stmt.setInt(7, Integer.parseInt(cidentry.getText()));
+            int check =stmt.executeUpdate();
+//            System.out.println(check);
+            if(check>0) showcustomerrecord();
+            else printing("Not Updated ","update","Error");
+
+        }
 
     }
 
@@ -250,7 +288,7 @@ public class Customer implements Initializable {
         Connection c;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            c= DriverManager.getConnection("jdbc:mysql://117.236.190.213/bank_144","bank_144","bank_144");
+            c= DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_144","root","Satyam@07");
             System.out.println("Connected to the database successfully " + c.getCatalog());
             return c;
         }

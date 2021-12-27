@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.AllClasses.branchclass;
-import sample.AllClasses.tranctionclass;
 
 import java.io.IOException;
 import java.net.URL;
@@ -102,8 +101,20 @@ public class Branch implements Initializable {
     }
 
     @FXML
-    void deletebutton(ActionEvent event) {
-
+    void deletebutton(ActionEvent event) throws SQLException {
+        if(event.getSource()==deletebtn){
+            Connection c=getConnection();
+            String sql="Delete from branch where branch_id=? and branch_name=? and branch_city=?";
+            PreparedStatement smt=c.prepareStatement(sql);
+            smt.setInt(1,Integer.parseInt(bidentry.getText()));
+            smt.setString(2,branchnameentry.getText());
+            smt.setString(3,branchcityentry.getText());
+            int i=smt.executeUpdate();
+            if(i>0)
+                showbranchrecord();
+            else
+                printing("Record not Found","Not Delete","Delete");
+        }
     }
 
     @FXML
@@ -156,8 +167,21 @@ public class Branch implements Initializable {
     }
 
     @FXML
-    void updatebutton(ActionEvent event) {
-
+    private void updatebutton(ActionEvent event) throws SQLException {
+        if(event.getSource()==updatebtn){
+            Connection c= getConnection();
+            String sql="Update branch set  branch_name=? , " +
+                    "branch_city =?" +
+                    "where branch_id=?";
+            PreparedStatement stmt=c.prepareStatement(sql);
+            stmt.setString(1,branchnameentry.getText());
+            stmt.setString(2,branchcityentry.getText());
+            stmt.setInt(3,Integer.parseInt(bidentry.getText()));
+            int check =stmt.executeUpdate();
+//            System.out.println(check);
+            if(check>0) showbranchrecord();
+            else printing("Not Updated Record Not Found","update","Error");
+        }
     }
 
     @Override
@@ -168,7 +192,7 @@ public class Branch implements Initializable {
         Connection c;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            c= DriverManager.getConnection("jdbc:mysql://117.236.190.213/bank_144","bank_144","bank_144");
+            c= DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_144","root","Satyam@07");
             System.out.println("Connected to the database successfully " + c.getCatalog());
             return c;
         }

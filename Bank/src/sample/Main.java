@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 //cd C:\Program Files\MySQL\MySQL Server 8.0\bin
 // mysql -u bank_144 -p -h 117.236.190.213
+//c= DriverManager.getConnection("jdbc:mysql://117.236.190.213/bank_144","bank_144","bank_144");
 
 public class Main extends Application {
 

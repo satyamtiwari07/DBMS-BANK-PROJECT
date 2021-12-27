@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="1313.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Allcontrollers.query">
+    <children>
+        <Pane layoutY="-2.0" prefHeight="98.0" prefWidth="1313.0" style="-fx-background-color: #89ABE3FF;">
+            <children>
+                <Text layoutX="411.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BANK PORTAL" textAlignment="CENTER" underline="true" wrappingWidth="374.9666442871094">
+                    <font>
+                        <Font size="37.0" />
+                    </font>
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.7789473533630371" green="0.7789473533630371" blue="0.7789473533630371" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Text>
+                <ImageView fitHeight="49.0" fitWidth="94.0" layoutX="1201.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Text layoutX="22.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUERY 1-Write a query to display the customer number, firstname, customer’s date of birth. Display in sorted order of date of birth year and within that sort by firstname." wrappingWidth="547.4828186035156" />
+        <Button fx:id="Q1" layoutX="597.0" layoutY="136.0" mnemonicParsing="false" onAction="#query1" text="QUERY1" />
+        <Text layoutX="25.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUERY 2-Write a query to display  the customer number, customer firstname,account number for the customer’s whose accounts were created after 15th of any month." wrappingWidth="541.0828552246094" />
+        <Button fx:id="Q2" layoutX="597.0" layoutY="246.0" mnemonicParsing="false" onAction="#query2" text="QUERY2" />
+        <Text layoutX="27.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUERY 3-Write a query to display the customers firstname, city and account number who are not into business, service or studies." wrappingWidth="541.0828552246094" />
+        <Button fx:id="Q3" layoutX="597.0" layoutY="391.0" mnemonicParsing="false" onAction="#query3" text="QUERY3" />
+        <Text layoutX="25.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUERY 4-Write a query to display city name and count of branches in that city. Give the count of branches an alias name of Count_Branch." wrappingWidth="541.0828552246094" />
+        <Button fx:id="Q4" layoutX="597.0" layoutY="510.0" mnemonicParsing="false" onAction="#query4" text="QUERY4" />
+        <Text layoutX="27.0" layoutY="634.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUERY 5-Write a query to display the customer’s number, customer’s firstname, branch id and loan amount for people who have taken loans." wrappingWidth="541.0828552246094" />
+        <Button fx:id="Q5" layoutX="597.0" layoutY="625.0" mnemonicParsing="false" onAction="#query5" text="QUERY5" />
+        <VBox layoutX="1149.0" layoutY="96.0" prefHeight="642.0" prefWidth="164.0" style="-fx-background-color: #89ABE3FF;">
+         <children>
+            <Button fx:id="Accountbutton" mnemonicParsing="false" onAction="#Accountbtn" prefHeight="26.0" prefWidth="122.0" text="ACCOUNT">
+               <VBox.margin>
+                  <Insets left="25.0" top="65.0" />
+               </VBox.margin>
+            </Button>
+              <Button fx:id="customerbutton" mnemonicParsing="false" onAction="#customerbtn" prefHeight="26.0" prefWidth="122.0" text="CUSTOMER">
+               <VBox.margin>
+                  <Insets left="25.0" top="65.0" />
+               </VBox.margin>
+            </Button>
+              <Button fx:id="branchbutton" mnemonicParsing="false" onAction="#branchbtn" prefHeight="26.0" prefWidth="122.0" text="BRANCH">
+               <VBox.margin>
+                  <Insets left="25.0" top="65.0" />
+               </VBox.margin>
+            </Button>
+              <Button fx:id="tranbutton" mnemonicParsing="false" onAction="#tranbtn" prefHeight="26.0" prefWidth="122.0" text="TRANSACTION DETAIL">
+                  <font>
+                      <Font size="10.0" />
+                  </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="65.0" />
+               </VBox.margin>
+              </Button>
+              <Button fx:id="loanbutton" mnemonicParsing="false" onAction="#loanbtn" prefHeight="26.0" prefWidth="122.0" text="LOAN">
+               <VBox.margin>
+                  <Insets left="25.0" top="65.0" />
+               </VBox.margin>
+            </Button>
+              <Button fx:id="exitbutton" mnemonicParsing="false" onAction="#exitbtn" prefHeight="26.0" prefWidth="122.0" text="EXIT" textAlignment="JUSTIFY">
+               <VBox.margin>
+                  <Insets left="25.0" top="65.0" />
+               </VBox.margin>
+            </Button>
+         </children></VBox>
+        <Text fill="#464676" layoutX="132.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BANK QUERIES" textAlignment="CENTER" underline="true" wrappingWidth="331.20001220703125">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="19.0" />
+            </font>
+        </Text>
+        <TableView fx:id="Query1table" layoutX="693.0" layoutY="99.0" prefHeight="108.0" prefWidth="436.0">
+            <columns>
+                <TableColumn fx:id="customercolumn1" prefWidth="98.4000244140625" text="Customer_id" />
+                <TableColumn fx:id="fnamecolumn1" prefWidth="113.5999755859375" text="Fname" />
+                <TableColumn fx:id="lnamecol1" prefWidth="105.5999755859375" text="Lname" />
+                <TableColumn fx:id="dobcol1" prefWidth="116.800048828125" text="Dob" />
+            </columns>
+        </TableView>
+        <TableView fx:id="Query2table" layoutX="693.0" layoutY="217.0" prefHeight="108.0" prefWidth="436.0">
+            <columns>
+                <TableColumn fx:id="cidcol2" prefWidth="140.0" text="Customer_id" />
+                <TableColumn fx:id="fnamecol2" prefWidth="145.0" text="Fname" />
+                <TableColumn fx:id="accountnocol2" minWidth="1.60003662109375" prefWidth="150.0" text="Account_number" />
+            </columns>
+        </TableView>
+        <TableView fx:id="Query3table" layoutX="693.0" layoutY="349.0" prefHeight="108.0" prefWidth="436.0">
+            <columns>
+                <TableColumn fx:id="fnamecol3" prefWidth="92.0" text="Fname" />
+                <TableColumn fx:id="citycol3" prefWidth="100.0" text="City" />
+                <TableColumn fx:id="accnocol3" prefWidth="120.0" text="Account_number" />
+                <TableColumn fx:id="occupationcol3" prefWidth="128.0" text="Occupation" />
+            </columns>
+        </TableView>
+        <TableView fx:id="Query4table" layoutX="693.0" layoutY="481.0" prefHeight="108.0" prefWidth="436.0">
+            <columns>
+                <TableColumn fx:id="branchcitycol4" prefWidth="198.4000244140625" text="Branch_City" />
+                <TableColumn fx:id="countcol4" prefWidth="236.79998779296875" text="Count_Branch" />
+            </columns>
+        </TableView>
+        <TableView fx:id="Query5table" layoutX="693.0" layoutY="612.0" prefHeight="108.0" prefWidth="436.0">
+            <columns>
+                <TableColumn fx:id="cidcol5" prefWidth="99.20001220703125" text="Customer_id" />
+                <TableColumn fx:id="fnamecol5" prefWidth="121.5999755859375" text="Fname" />
+                <TableColumn fx:id="branchidcol5" prefWidth="120.7999267578125" text="Branch_id" />
+                <TableColumn fx:id="amountcol5" prefWidth="95.199951171875" text="Amount" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
