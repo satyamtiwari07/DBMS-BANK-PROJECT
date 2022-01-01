@@ -115,13 +115,13 @@ Invite me to connect on
 
 Thank you for being here!
 
-javascript
+```javascript
 
   if (isAwesome) {
     // Give a ⭐  :p
     starThisRepository();
   }
-  
+  ```
 
 
 -------
