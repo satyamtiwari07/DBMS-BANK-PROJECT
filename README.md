@@ -118,8 +118,8 @@ Thank you for being here!
 ```javascript
 
   if (isAwesome) {
-    // Give a ⭐  :p
-    starThisRepository();
+      Give a ⭐:p
+      starThisRepository();
   }
   ```
 
