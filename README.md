@@ -109,7 +109,7 @@ Invite me to connect on
 <a href="https://www.linkedin.com/in/satyam-tiwari-b12a4520a/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Satyam%20Tiwari-blue?style=flat-square&logo=linkedin"></a>
 
 
-[![Instagram](https://img.shields.io/static/v1.svg?label=follow&message=@Satyam Tiwari&color=grey&logo=instagram&style=flat&logoColor=white&colorA=critical)](https://www.instagram.com/s_a_t_y_a_m_0_7/)
+[![Instagram](https://img.shields.io/static/v1.svg?label=follow&message=@Satyam.Tiwari_&color=grey&logo=instagram&style=flat&logoColor=white&colorA=critical)](https://www.instagram.com/s_a_t_y_a_m_0_7/)
 
 
 Thank you for being here!
