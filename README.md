@@ -95,14 +95,14 @@ The source code of this project is written in *Javafx. So, you'll require **JAVA
 
 
 
-javascript
+```javascript
 
   if (needHelp === true) {
      var emailId = "namantiwari470@gmail.com";
      // email is the best way to reach out to me.
      sendEmail(emailId);
   }
-
+```
 
 
 Invite me to connect on 
